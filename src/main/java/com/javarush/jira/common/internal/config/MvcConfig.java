@@ -1,5 +1,4 @@
 package com.javarush.jira.common.internal.config;
-
 import com.javarush.jira.login.AuthUser;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,21 +48,17 @@ public class MvcConfig implements WebMvcConfigurer {
                 }
             }
         }
-
         @Override
         public void afterCompletion(WebRequest request, Exception ex) {
         }
-
         @Override
         public void preHandle(WebRequest request) {
         }
     });
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authInterceptor).excludePathPatterns("/api/**");
     }
-
     //  http://www.codejava.net/frameworks/spring/spring-mvc-url-based-view-resolution-with-urlfilenameviewcontroller-example
     @Bean
     public SimpleUrlHandlerMapping getUrlHandlerMapping() {
@@ -75,18 +70,15 @@ public class MvcConfig implements WebMvcConfigurer {
             setInterceptors(authInterceptor);
         }};
     }
-
     //  https://springdoc.org/index.html#how-can-i-deploy-springdoc-openapi-ui-behind-a-reverse-proxy
     @Bean
     ForwardedHeaderFilter forwardedHeaderFilter() {
         return new ForwardedHeaderFilter();
     }
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
-
     @GetMapping("/")
     public String index(Locale locale, ModelMap model) {
         String welcomeMessage = messageSource.getMessage("index.welcome", null, locale);
@@ -99,7 +91,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**").addResourceLocations("file:./resources/static/");
         registry.setOrder(Integer.MAX_VALUE);
     }
-
     @Bean
 //    https://stackoverflow.com/a/46966350/548473
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
