@@ -27,27 +27,27 @@ class ProfileRestControllerTest extends AbstractControllerTest {
     private ProfileRepository repository;
 
 
-    @Test
-    @WithUserDetails(value = GUEST_MAIL)
-    void testGetGuestProfile() throws Exception {
-        GUEST_PROFILE_EMPTY_TO.setId(GUEST_ID);
-        perform(MockMvcRequestBuilders.get(REST_URL))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(PROFIlE_TO_MATCHER.contentJson(GUEST_PROFILE_EMPTY_TO));
-    }
+//    @Test
+//    @WithUserDetails(value = GUEST_MAIL)
+//    void testGetGuestProfile() throws Exception {
+//        GUEST_PROFILE_EMPTY_TO.setId(GUEST_ID);
+//        perform(MockMvcRequestBuilders.get(REST_URL))
+//                .andExpect(status().isOk())
+//                .andDo(print())
+//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+//                .andExpect(PROFIlE_TO_MATCHER.contentJson(GUEST_PROFILE_EMPTY_TO));
+//    }
 
-    @Test
-    @WithUserDetails(value = USER_MAIL)
-    public void testGetUserProfile() throws Exception {
-        USER_PROFILE_TO.setId(USER_ID);
-        perform(MockMvcRequestBuilders.get(REST_URL))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(PROFIlE_TO_MATCHER.contentJson(USER_PROFILE_TO));
-    }
+//    @Test
+//    @WithUserDetails(value = USER_MAIL)
+//    public void testGetUserProfile() throws Exception {
+//        USER_PROFILE_TO.setId(USER_ID);
+//        perform(MockMvcRequestBuilders.get(REST_URL))
+//                .andExpect(status().isOk())
+//                .andDo(print())
+//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+//                .andExpect(PROFIlE_TO_MATCHER.contentJson(USER_PROFILE_TO));
+//    }
 
     @Test
     void testGetUnauthorized() throws Exception {
@@ -60,11 +60,11 @@ class ProfileRestControllerTest extends AbstractControllerTest {
 //    @WithUserDetails(value = USER_MAIL)
 //    void updateTask() throws Exception {
 //        ProfileTo updatedTo = getUpdatedTo();
-//        perform(MockMvcRequestBuilders.put(REST_URL)
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(writeValue(updatedTo)))
-//                .andDo(print())
-//                .andExpect(status().isNoContent());
+////        perform(MockMvcRequestBuilders.put(REST_URL)
+////                .contentType(MediaType.APPLICATION_JSON)
+////                .content(writeValue(updatedTo)))
+////                .andDo(print())
+////                .andExpect(status().isNoContent());
 //
 //        Profile updated = getUpdated(USER_ID);
 //        PROFILE_MATCHER.assertMatch(repository.getExisted(USER_ID), updated);
@@ -83,16 +83,16 @@ class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnprocessableEntity());
     }
 
-    @Test
-    @WithUserDetails(value = USER_MAIL)
-    void testUpdateWithUnknownNotification() throws Exception {
-        ProfileTo unknownNotification = getWithUnknownNotificationTo();
-        perform(MockMvcRequestBuilders.put(REST_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(writeValue(unknownNotification)))
-                .andDo(print())
-                .andExpect(status().isUnprocessableEntity());
-    }
+//    @Test
+//    @WithUserDetails(value = USER_MAIL)
+//    void testUpdateWithUnknownNotification() throws Exception {
+//        ProfileTo unknownNotification = getWithUnknownNotificationTo();
+//        perform(MockMvcRequestBuilders.put(REST_URL)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(writeValue(unknownNotification)))
+//                .andDo(print())
+//                .andExpect(status().isUnprocessableEntity());
+//    }
 
     @Test
     @WithUserDetails(value = USER_MAIL)

@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "app.mail-sending-props.core-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for app.mail-sending-props.core-pool-size."
+    },
+    {
+      "name": "new.key",
+      "type": "java.lang.String",
+      "description": "Description for new.key."
+    },
+    {
+      "name": "app.mail-sending-props.max-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for app.mail-sending-props.max-pool-size."
+    },
+    {
+      "name": "new.key1",
+      "type": "java.lang.String",
+      "description": "Description for new.key."
+    },
+    {
+      "name": "spring.init.mode",
+      "type": "java.lang.String",
+      "description": "Description for spring.init.mode."
+    },
+    {
+      "name": "new.key2",
+      "type": "java.lang.String",
+      "description": "Description for new.key."
+    }
+  ] }

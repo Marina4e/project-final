@@ -1,0 +1,62 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ChangeSet for H2 Database -->
+    <changeSet id="change_UK_USER_BELONG_H2" author="ishlyakhtenkov">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="h2"/>
+        </preConditions>
+        <sql>create unique index UK_USER_BELONG on USER_BELONG (OBJECT_ID, OBJECT_TYPE, USER_ID, USER_TYPE_CODE);</sql>
+    </changeSet>
+
+    <!-- ChangeSet for Other Databases -->
+    <changeSet id="change_UK_USER_BELONG_OtherDB" author="ishlyakhtenkov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <dbms type="h2"/>
+            </not>
+        </preConditions>
+        <sql>create unique index UK_USER_BELONG on USER_BELONG (OBJECT_ID, OBJECT_TYPE, USER_ID, USER_TYPE_CODE) where ENDPOINT is null;</sql>
+    </changeSet>
+
+    <!-- Create CONTACT Table -->
+    <changeSet id="1" author="yourname">
+        <createTable tableName="CONTACT">
+            <column name="ID" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CODE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VAL" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create DATABASECHANGELOG Table -->
+    <changeSet id="create-databasechangelog-table" author="your_username">
+        <createTable tableName="databasechangelog">
+            <column name="ID" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="AUTHOR" type="varchar(255)"/>
+            <column name="FILENAME" type="varchar(255)"/>
+            <column name="DATEEXECUTED" type="timestamp"/>
+            <column name="ORDEREXECUTED" type="integer"/>
+            <column name="EXECTYPE" type="varchar(10)"/>
+            <column name="MD5SUM" type="varchar(35)"/>
+            <column name="DESCRIPTION" type="varchar(255)"/>
+            <column name="COMMENTS" type="varchar(255)"/>
+            <column name="TAG" type="varchar(255)"/>
+            <column name="LIQUIBASE" type="varchar(20)"/>
+            <column name="CONTEXTS" type="varchar(255)"/>
+            <column name="LABELS" type="varchar(255)"/>
+            <column name="DEPLOYMENT_ID" type="varchar(10)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
